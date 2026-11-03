@@ -16,11 +16,19 @@ spring:
             - RemoveRequestHeader=id-account
             - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
           routes:
-            - id: insper-service
-              uri: https://www.insper.edu.br
-              predicates:
-                - Path=/insper/**
             - id: account-service
               uri: http://account:8080
               predicates:
                 - Path=/accounts/**
+            
+            - id: auth-service
+              uri: http://auth:8080
+              predicates:
+                - Path=/auth/**
+
+
+logging:
+  level:
+    root: info
+    store: debug
+    org.springframework.web: debug
